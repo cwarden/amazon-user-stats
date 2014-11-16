@@ -1,0 +1,7 @@
+install.packages("shiny")
+install.packages("devtools")
+install.packages("ggplot2")
+install.packages("dplyr")
+devtools::install_github("gaborcsardi/falsy")
+devtools::install_github("gaborcsardi/dotenv")
+devtools::install_github("cwarden/amazonuserstatr")
