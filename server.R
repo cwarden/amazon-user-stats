@@ -12,12 +12,14 @@ shinyServer(function(input, output) {
 
 			rows <- tbl(src, "user_info")
 
+			user <- rows %>% arrange(desc(timestamp)) %>% select(user_name) %>% head(1) %>% as.character()
+
 			rows %>%
 				mutate(percent_helpful = 100 * reviews_helpful / reviews_voted, inverted_rank = -rank) %>%
 				collect %>%
 				ggplot(aes(x = timestamp, y = inverted_rank, color = percent_helpful)) +
 				geom_point(aes(size = reviews)) + geom_line() +
 				scale_y_continuous("Rank", limits = c(-3500000, -1), breaks = c(-1, -1500000, -3000000), labels = c("1", "1.5 million", "3 million")) +
-				xlab("Date") + labs(title = "Christian's Amazon Reviewer Rank", color = "Percent\nHelpful", size = "Reviews")
+				xlab("Date") + labs(title = paste0("Amazon Reviewer Rank: ", user), color = "Percent\nHelpful", size = "Reviews")
 		})
 })
