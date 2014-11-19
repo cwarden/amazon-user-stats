@@ -1,19 +1,14 @@
 library(shiny)
 library(dplyr)
 library(ggplot2)
-library(dotenv)
 
-db_user <- Sys.getenv('DB_USER')
-db_pass <- Sys.getenv('DB_PASS')
-db_host <- Sys.getenv('DB_HOST')
-db_port <- Sys.getenv('DB_PORT')
-db_name <- Sys.getenv('DB_NAME')
+source("heroku.R")
 
 options(bitmapType = 'cairo')
 
 shinyServer(function(input, output) {
 		output$plot <- renderPlot({
-			src <- src_postgres(user = db_user, password = db_pass, host = db_host, port = db_port, dbname = db_name)
+			src <- src_heroku()
 
 			rows <- tbl(src, "user_info")
 
