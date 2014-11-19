@@ -1,0 +1,22 @@
+{
+  "name": "Amazon User Stats",
+  "description": "Collect and display Amazon reviewer stats for a user",
+  "keywords": [
+    "amazon",
+    "rstats"
+  ],
+  "repository": "https://github.com/cwarden/amazon-user-stats",
+  "addons": [
+    "heroku-postgresql:hobby-dev",
+    "scheduler:standard"
+  ],
+  "scripts": {
+    "postdeploy": "R CMD BATCH record.R"
+  },
+  "env": {
+    "BUILDPACK_URL": "http://github.com/virtualstaticvoid/heroku-buildpack-r.git",
+    "AMAZON_PROFILE_ID": {
+      "description": "Amazon User Profile Id"
+    }
+  }
+}
