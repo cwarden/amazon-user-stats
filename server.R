@@ -9,6 +9,8 @@ db_host <- Sys.getenv('DB_HOST')
 db_port <- Sys.getenv('DB_PORT')
 db_name <- Sys.getenv('DB_NAME')
 
+options(bitmapType = 'cairo')
+
 shinyServer(function(input, output) {
 		output$plot <- renderPlot({
 			src <- src_postgres(user = db_user, password = db_pass, host = db_host, port = db_port, dbname = db_name)
