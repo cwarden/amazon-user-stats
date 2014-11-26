@@ -14,7 +14,7 @@
     "postdeploy": "R CMD BATCH record.R"
   },
   "env": {
-    "BUILDPACK_URL": "http://github.com/virtualstaticvoid/heroku-buildpack-r.git",
+    "BUILDPACK_URL": "http://github.com/virtualstaticvoid/heroku-buildpack-r.git#cedar-14",
     "AMAZON_PROFILE_ID": {
       "description": "Amazon User Profile Id"
     }
